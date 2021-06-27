@@ -2,4 +2,5 @@ dash==1.20.0
 numpy==1.20.0
 pandas==1.2.4
 plotly==4.14.3
+scikit-learn==0.24.2
 statsmodels==0.12.2

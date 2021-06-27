@@ -25,6 +25,63 @@ class AppLayout:
                                         html.Div(
                                             className="app-card-internal-left-top",
                                             children=[
+                                                dcc.Tabs(
+                                                    className='app-card-internal-left-tabs',
+                                                    id='app-card-internal-left-tabs',
+                                                    children=[
+                                                        dcc.Tab(
+                                                            label='Analysis',
+                                                            value='tab-analysis',
+                                                            className='custom-tab',
+                                                            selected_className='custom-tab-selected',
+                                                            style={
+                                                                "background-color": "#eeeeee",
+                                                                "border-right": "2px solid #d6d6d6",
+                                                                "border-bottom": "2px solid #d6d6d6",
+                                                                "font-family": "Helvetica, Calibri",
+                                                                "padding-bottom": "15px",
+                                                                "padding-top": "15px",
+                                                                "text-align": "center"
+                                                            },
+                                                            selected_style={
+                                                                "border-top": "0px",
+                                                                "font-family": "Helvetica, Calibri",
+                                                                "font-size": "1.5em",
+                                                                "font-weight": "bold",
+                                                                "padding-bottom": "10px",
+                                                                "padding-top": "10px"
+                                                            }
+                                                        ),
+                                                        dcc.Tab(
+                                                            label='Forecasting',
+                                                            value='tab-forecasting',
+                                                            className='custom-tab',
+                                                            selected_className='custom-tab-selected',
+                                                            style={
+                                                                "background-color": "#eeeeee",
+                                                                "border-right": "2px solid #d6d6d6",
+                                                                "border-bottom": "2px solid #d6d6d6",
+                                                                "font-family": "Helvetica, Calibri",
+                                                                "padding-bottom": "15px",
+                                                                "padding-top": "15px",
+                                                                "text-align": "center"
+                                                            },
+                                                            selected_style={
+                                                                "border-top": "0px",
+                                                                "font-family": "Helvetica, Calibri",
+                                                                "font-size": "1.5em",
+                                                                "font-weight": "bold",
+                                                                "padding-bottom": "10px",
+                                                                "padding-top": "10px"
+                                                            }
+                                                        )
+                                                    ],
+                                                    value='tab-analysis',
+                                                    style={
+                                                        'display': 'flex',
+                                                        'flex-direction': 'row'
+                                                    }
+                                                ),
                                                 html.Div(
                                                     className="app-card-internal-left-menu-item-title",
                                                     children=[dcc.Markdown('''## Mathematical tool''')]
@@ -34,14 +91,7 @@ class AppLayout:
                                                     children=[
                                                         dcc.Dropdown(
                                                             id='mathematical-tool-dropdown',
-                                                            options=[
-                                                                {'label': 'Hodrick-Prescott filter', 'value': 'hodrickPrescottFilter'},
-                                                                {'label': 'ETS decomposition', 'value': 'errorTrendSeasonalityDecomposition'},
-                                                                {'label': 'SMA', 'value': 'simpleMovingAverage'},
-                                                                {'label': 'EWMA', 'value': 'exponentiallyWeightedMovingAverage'}
-                                                            ],
-                                                            value='hodrickPrescottFilter',
-                                                            style={'border-width': '2.5px'}
+                                                            style={'border-width': '2px'}
                                                         )
                                                     ]
                                                 ),
@@ -68,7 +118,7 @@ class AppLayout:
                                     style={
                                         'display': 'flex',
                                         'flex-direction': 'column',
-                                        'width': '35%',
+                                        'width': '40%',
                                         'vertical-align': 'middle'
                                     }
                                 ),
@@ -83,7 +133,7 @@ class AppLayout:
                                     ],
                                     style={
                                         'display': 'inline-block',
-                                        'width': '65%',
+                                        'width': '60%',
                                         "vertical-align": "top"
                                     }
                                 )

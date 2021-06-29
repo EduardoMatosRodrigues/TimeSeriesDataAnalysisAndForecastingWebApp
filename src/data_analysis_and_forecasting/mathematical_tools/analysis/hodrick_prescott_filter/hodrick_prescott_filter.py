@@ -8,7 +8,7 @@ class HodrickPrescottFilter:
     def __init__(self):
 
         self.hodrick_prescott_filter = {
-            "explanation": "The Hodrick-Prescott filter is a method used to calculate the trend and cycle components of a data series",
+            "explanation": "The Hodrick-Prescott Filter is a method used to calculate the trend and cycle components of a data series",
             "components": {
                 "dataArray": None,
                 "dataArrayCycleComponent": None,

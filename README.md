@@ -12,17 +12,24 @@
 > - dash
 > - dash_core_components
 > - dash_html_components
+> - numpy
 > - pandas
 > - plotly
+> - sklearn
 > - statsmodels
 
 <br>
 
 >### **What mathematical tools are used in this project?**
-> - Hodrick-Prescott filter
-> - Error trend seasonality decomposition
-> - Simple moving average
-> - Exponentially weighted moving average
+> - Analysis:
+>  - Error-trend-seasonality decomposition
+>  - Exponentially weighted moving average
+>  - Hodrick-Prescott filter
+>  - Simple moving average
+> - Forecasting:
+>  - Double exponential smoothing (Holt's method)
+>  - Simple exponential smoothing
+>  - Triple exponential smoothing (Holt-Winters' method)
 
 <br>
 
@@ -49,4 +56,4 @@
 
 >### **Project screenshot**
 >
->![screenshot](https://github.com/EduardoMatosRodrigues/TimeSeriesDataAnalysisAndForecastingWebApp/raw/master/src/screenshots/screenshot-v1.00.png)
+>![screenshot](https://github.com/EduardoMatosRodrigues/TimeSeriesDataAnalysisAndForecastingWebApp/raw/master/src/screenshots/screenshot-develop-latest.png)

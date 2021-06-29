@@ -28,23 +28,14 @@ def render_content(tab):
 
     if tab == 'tab-analysis':
 
-        dropdown_options = [
-            {'label': 'Hodrick-Prescott Filter', 'value': 'hodrickPrescottFilter'},
-            {'label': 'ETS Decomposition', 'value': 'errorTrendSeasonalityDecomposition'},
-            {'label': 'Simple Moving Average', 'value': 'simpleMovingAverage'},
-            {'label': 'Exponentially Weighed Moving Average', 'value': 'exponentiallyWeightedMovingAverage'},
-        ]
+        dropdown_options = app_layout.get_analysis_dropdown_options()
         dropdown_value = 'hodrickPrescottFilter'
 
         return dropdown_options, dropdown_value
 
     elif tab == 'tab-forecasting':
 
-        dropdown_options = [
-            {'label': 'Simple Exponential Smoothing', 'value': 'simpleExponentialSmoothing'},
-            {'label': 'Double Exponential Smoothing (Holt Method)', 'value': 'doubleExponentialSmoothing'},
-            {'label': 'Triple Exponential Smoothing (Holt-Winters Method)', 'value': 'tripleExponentialSmoothing'}
-        ]
+        dropdown_options = app_layout.get_forecasting_dropdown_options()
         dropdown_value = 'simpleExponentialSmoothing'
 
         return dropdown_options, dropdown_value

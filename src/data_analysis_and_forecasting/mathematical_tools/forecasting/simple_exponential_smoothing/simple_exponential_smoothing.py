@@ -130,7 +130,7 @@ class SimpleExponentialSmoothing:
                  + "<span style='font-size: 11px'; 'font-family: Helvetica, Calibri';>RMSE: {}</span>".format(round(self.simple_exponential_smoothing["forecastEvaluation"], 2)),
             align="left",
             bordercolor="black",
-            borderwidth=2,
+            borderwidth=1,
             borderpad=7.5,
             bgcolor="white",
             showarrow=False,

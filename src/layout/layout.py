@@ -146,3 +146,26 @@ class AppLayout:
         )
 
         return app_layout
+
+    @staticmethod
+    def get_analysis_dropdown_options():
+
+        analysis_dropdown_options = [
+            {'label': 'Hodrick-Prescott Filter', 'value': 'hodrickPrescottFilter'},
+            {'label': 'Error-Trend-Seasonality (ETS) Decomposition', 'value': 'errorTrendSeasonalityDecomposition'},
+            {'label': 'Simple Moving Average', 'value': 'simpleMovingAverage'},
+            {'label': 'Exponentially Weighed Moving Average (EWMA)', 'value': 'exponentiallyWeightedMovingAverage'},
+        ]
+
+        return analysis_dropdown_options
+
+    @staticmethod
+    def get_forecasting_dropdown_options():
+
+        forecasting_dropdown_options = [
+            {'label': 'Simple Exponential Smoothing', 'value': 'simpleExponentialSmoothing'},
+            {'label': "Double Exponential Smoothing (Holt's Method)", 'value': 'doubleExponentialSmoothing'},
+            {'label': "Triple Exponential Smoothing (Holt-Winters' Method)", 'value': 'tripleExponentialSmoothing'}
+        ]
+
+        return forecasting_dropdown_options

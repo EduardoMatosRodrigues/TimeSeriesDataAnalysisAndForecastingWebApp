@@ -7,7 +7,9 @@ class ExponentiallyWeightedMovingAverage:
     def __init__(self):
 
         self.exponentially_weighted_moving_average = {
-            "explanation": "The EWMA is a method used to calculate the trend or cycle components of a data series by smoothing out the noise of short-term fluctuations",
+            "explanation":
+                "The EWMA is a method used to calculate the trend or cycle components of a data series"
+                + " by smoothing out the noise of short-term fluctuations",
             "components": {
                 "dataArray": None,
                 "dataArrayEwma3monthsComponent": None,

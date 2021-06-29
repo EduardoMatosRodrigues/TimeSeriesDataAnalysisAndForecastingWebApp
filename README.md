@@ -56,4 +56,4 @@
 
 >### **Project screenshot**
 >
->![screenshot](https://github.com/EduardoMatosRodrigues/TimeSeriesDataAnalysisAndForecastingWebApp/raw/master/src/screenshots/screenshot-develop-latest.png)
+>![screenshot](https://github.com/EduardoMatosRodrigues/TimeSeriesDataAnalysisAndForecastingWebApp/raw/develop/src/screenshots/screenshot-develop-latest.png)

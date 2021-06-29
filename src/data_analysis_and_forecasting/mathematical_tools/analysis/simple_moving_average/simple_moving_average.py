@@ -7,7 +7,9 @@ class SimpleMovingAverage:
     def __init__(self):
 
         self.simple_moving_average = {
-            "explanation": "The SMA is a method used to calculate the trend or cycle components of a data series by smoothing out the noise of short-term fluctuations",
+            "explanation":
+                "The Simple Moving Average is a method used to calculate the trend or cycle components"
+                + " of a data series by smoothing out the noise of short-term fluctuations",
             "components": {
                 "dataArray": None,
                 "dataArraySma3monthsComponent": None,

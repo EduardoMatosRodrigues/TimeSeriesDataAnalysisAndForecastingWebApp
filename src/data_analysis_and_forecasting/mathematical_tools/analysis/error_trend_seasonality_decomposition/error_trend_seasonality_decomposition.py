@@ -8,7 +8,7 @@ class ErrorTrendSeasonalityDecomposition:
     def __init__(self):
 
         self.error_trend_seasonality_decomposition = {
-            "explanation": "The ETS decomposition is a method used to calculate the error, trend and seasonal components of a data series",
+            "explanation": "The ETS Decomposition is a method used to calculate the error, trend and seasonal components of a data series",
             "components": {
                 "dataArray": None,
                 "dataArrayCycleComponent": None,

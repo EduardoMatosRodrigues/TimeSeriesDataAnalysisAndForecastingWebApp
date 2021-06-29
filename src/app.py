@@ -1,7 +1,7 @@
 from dash.dependencies import Input, Output
 from datasets.datasets import Datasets
 from layout.layout import AppLayout
-from time_series_analysis.time_series_analysis import TimeSeriesAnalysis
+from data_analysis_and_forecasting.data_analysis_and_forecasting import DataAnalysisAndForecasting
 import dash
 
 app_version = "1.00"
@@ -9,8 +9,8 @@ app_version = "1.00"
 datasets = Datasets()
 datasets.set()
 
-time_series_analysis = TimeSeriesAnalysis(datasets)
-time_series_analysis.set_results()
+data_analysis_and_forecasting = DataAnalysisAndForecasting(datasets)
+data_analysis_and_forecasting.set_results()
 
 app = dash.Dash()
 
@@ -20,15 +20,38 @@ app.layout = app_layout.get(app_version)
 
 
 @app.callback(
+    Output('mathematical-tool-dropdown', 'options'),
+    Output('mathematical-tool-dropdown', 'value'),
+    Input('app-card-internal-left-tabs', 'value')
+)
+def render_content(tab):
+
+    if tab == 'tab-analysis':
+
+        dropdown_options = app_layout.get_analysis_dropdown_options()
+        dropdown_value = 'hodrickPrescottFilter'
+
+        return dropdown_options, dropdown_value
+
+    elif tab == 'tab-forecasting':
+
+        dropdown_options = app_layout.get_forecasting_dropdown_options()
+        dropdown_value = 'simpleExponentialSmoothing'
+
+        return dropdown_options, dropdown_value
+
+
+@app.callback(
     Output('mathematical-tool-results-figure', 'figure'),
     Output('dataset-explanation', 'children'),
     Output('mathematical-tool-explanation', 'children'),
-    [Input('mathematical-tool-dropdown', 'value')])
+    Input('mathematical-tool-dropdown', 'value')
+)
 def update_output(value):
 
-    return time_series_analysis.get_results()[value]["figure"], \
-           datasets.get()[time_series_analysis.get_results()[value]["dataset"]]["explanation"], \
-           time_series_analysis.get_results()[value]["explanation"]
+    return data_analysis_and_forecasting.get_results()[value]["figure"], \
+           datasets.get()[data_analysis_and_forecasting.get_results()[value]["dataset"]]["explanation"], \
+           data_analysis_and_forecasting.get_results()[value]["explanation"]
 
 
 if __name__ == '__main__':

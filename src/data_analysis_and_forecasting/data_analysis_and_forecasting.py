@@ -15,54 +15,57 @@ class DataAnalysisAndForecasting:
 
         self.datasets = datasets.get()
 
-    def get_results(self):
+    def get_results(self, mathematical_tool):
 
-        return self.results
+        return self.results[mathematical_tool]
 
     def set_double_exponential_smoothing(self):
 
         double_exponential_smoothing = DoubleExponentialSmoothing()
         double_exponential_smoothing.set(
             dataArray=self.datasets["timeSeriesDataSamples"]["pandasDataframe"]["Data with trend"],
-            dataset="timeSeriesDataSamples",
-            dataType="Sample data"
+            dataSet="timeSeriesDataSamples",
+            dataType="Sample data",
+            dataUnit=None
         )
 
-        self.results["doubleExponentialSmoothing"] = double_exponential_smoothing.get_results()
+        self.results["doubleExponentialSmoothing"] = double_exponential_smoothing
 
     def set_error_trend_seasonality_decomposition(self):
 
         error_trend_seasonality_decomposition = ErrorTrendSeasonalityDecomposition()
         error_trend_seasonality_decomposition.set(
             dataArray=self.datasets["internationalAirlinePassengers"]["pandasDataframe"]["Thousands of Passengers"],
-            dataset="internationalAirlinePassengers",
-            dataType="Passengers"
+            dataSet="internationalAirlinePassengers",
+            dataType="Passengers",
+            dataUnit=None
         )
 
-        self.results["errorTrendSeasonalityDecomposition"] = error_trend_seasonality_decomposition.get_results()
+        self.results["errorTrendSeasonalityDecomposition"] = error_trend_seasonality_decomposition
 
     def set_exponentially_weighted_moving_average(self):
 
         exponentially_weighted_moving_average = ExponentiallyWeightedMovingAverage()
         exponentially_weighted_moving_average.set(
             dataArray=self.datasets["internationalAirlinePassengers"]["pandasDataframe"]["Thousands of Passengers"],
-            dataset="internationalAirlinePassengers",
-            dataType="Passengers"
+            dataSet="internationalAirlinePassengers",
+            dataType="Passengers",
+            dataUnit=None
         )
 
-        self.results["exponentiallyWeightedMovingAverage"] = exponentially_weighted_moving_average.get_results()
+        self.results["exponentiallyWeightedMovingAverage"] = exponentially_weighted_moving_average
 
     def set_hodrick_prescott_filter(self):
 
         hodrick_prescott_filter = HodrickPrescottFilter()
         hodrick_prescott_filter.set(
             dataArray=self.datasets["usMacroeconomic"]["pandasDataframe"]["realgdp"],
-            dataset="usMacroeconomic",
+            dataSet="usMacroeconomic",
             dataType="Real GDP",
             dataUnit="Billions of US$"
         )
 
-        self.results["hodrickPrescottFilter"] = hodrick_prescott_filter.get_results()
+        self.results["hodrickPrescottFilter"] = hodrick_prescott_filter
 
     def set_results(self):
 
@@ -78,31 +81,34 @@ class DataAnalysisAndForecasting:
 
         simple_exponential_smoothing = SimpleExponentialSmoothing()
         simple_exponential_smoothing.set(
-            dataArray=self.datasets["timeSeriesDataSamples"]["pandasDataframe"]["Stationary data"],
-            dataset="timeSeriesDataSamples",
-            dataType="Sample data"
+            dataArray=self.datasets["dailyFemaleBirthsInCalifornia"]["pandasDataframe"]["Births"],
+            dataSet="dailyFemaleBirthsInCalifornia",
+            dataType="Births",
+            dataUnit=None
         )
 
-        self.results["simpleExponentialSmoothing"] = simple_exponential_smoothing.get_results()
+        self.results["simpleExponentialSmoothing"] = simple_exponential_smoothing
 
     def set_simple_moving_average(self):
 
         simple_moving_average = SimpleMovingAverage()
         simple_moving_average.set(
             dataArray=self.datasets["internationalAirlinePassengers"]["pandasDataframe"]["Thousands of Passengers"],
-            dataset="internationalAirlinePassengers",
-            dataType="Passengers"
+            dataSet="internationalAirlinePassengers",
+            dataType="Passengers",
+            dataUnit=None
         )
 
-        self.results["simpleMovingAverage"] = simple_moving_average.get_results()
+        self.results["simpleMovingAverage"] = simple_moving_average
 
     def set_triple_exponential_smoothing(self):
 
         triple_exponential_smoothing = TripleExponentialSmoothing()
         triple_exponential_smoothing.set(
             dataArray=self.datasets["internationalAirlinePassengers"]["pandasDataframe"]["Thousands of Passengers"],
-            dataset="internationalAirlinePassengers",
-            dataType="Passengers"
+            dataSet="internationalAirlinePassengers",
+            dataType="Passengers",
+            dataUnit=None
         )
 
-        self.results["tripleExponentialSmoothing"] = triple_exponential_smoothing.get_results()
+        self.results["tripleExponentialSmoothing"] = triple_exponential_smoothing

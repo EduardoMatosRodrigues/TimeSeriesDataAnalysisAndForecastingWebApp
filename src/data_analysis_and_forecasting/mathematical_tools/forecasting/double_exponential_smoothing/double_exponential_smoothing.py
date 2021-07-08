@@ -1,3 +1,4 @@
+from data_analysis_and_forecasting.mathematical_tools.mathematical_tool_interface import MathematicalToolInterface
 from plotly.subplots import make_subplots
 from sklearn.metrics import mean_squared_error
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
@@ -5,72 +6,27 @@ import numpy as np
 import plotly.graph_objects as go
 
 
-class DoubleExponentialSmoothing:
+class DoubleExponentialSmoothing(MathematicalToolInterface):
 
     def __init__(self):
 
-        self.double_exponential_smoothing = {
-            "explanation": "The Double Exponential Smoothing is a time series forecasting method for univariate data with trend but without seasonality",
-            "components": {
-                "trainData": None,
-                "testData": None,
-                "fittedData": None,
-                "forecastData": None,
-            },
-            "dataSet": None,
-            "dataType": None,
-            "dataUnit": None,
-            "forecastEvaluation": None,
-            "figure": None
-        }
+        super().__init__()
 
-    def get_results(self):
+    def _set_explanation(self):
 
-        return self.double_exponential_smoothing
+        self.explanation = "The Double Exponential Smoothing is a time series forecasting method for univariate data with trend but without seasonality"
 
-    def set(self, **kwargs):
+    def _set_figure(self):
 
-        self.set_dataset(kwargs["dataset"])
-        self.set_data_type(kwargs["dataType"])
-        self.set_components(kwargs["dataArray"])
-        self.set_forecast_evaluation()
-        self.set_figure()
-
-    def set_components(self, data_array):
-
-        train_data = data_array.iloc[:int(0.8 * len(data_array))]
-        test_data = data_array.iloc[int(0.8 * len(data_array)) - 1:]
-
-        model = ExponentialSmoothing(
-            train_data,
-            trend="mul"
-        )
-        fitted_model = model.fit()
-
-        self.double_exponential_smoothing["components"]["trainData"] = train_data
-        self.double_exponential_smoothing["components"]["testData"] = test_data
-        self.double_exponential_smoothing["components"]["fittedData"] = fitted_model.fittedvalues.shift(-1)
-        self.double_exponential_smoothing["components"]["forecastData"] = fitted_model.forecast(len(test_data))
-
-    def set_dataset(self, dataset):
-
-        self.double_exponential_smoothing["dataset"] = dataset
-
-    def set_data_type(self, data_type):
-
-        self.double_exponential_smoothing["dataType"] = data_type
-
-    def set_figure(self):
-
-        if self.double_exponential_smoothing["dataUnit"] is None:
-            y_axis_title = self.double_exponential_smoothing["dataType"]
+        if self.input_data_info["dataUnit"] is None:
+            y_axis_title = self.input_data_info["dataType"]
         else:
             y_axis_title = "{} ({})".format(
-                self.double_exponential_smoothing["dataType"],
-                self.double_exponential_smoothing["dataUnit"]
+                self.input_data_info["dataType"],
+                self.input_data_info["dataUnit"]
             )
 
-        self.double_exponential_smoothing["figure"] = make_subplots(
+        self.figure = make_subplots(
             rows=1,
             cols=1,
             shared_xaxes=True,
@@ -78,53 +34,53 @@ class DoubleExponentialSmoothing:
             y_title="<span style='font-size: 15px'; 'font-family: Helvetica, Calibri';><b>" + y_axis_title + "</b></span>"
         )
 
-        self.double_exponential_smoothing["figure"].append_trace(
+        self.figure.append_trace(
             go.Scatter(
-                x=self.double_exponential_smoothing["components"]["trainData"].index,
-                y=self.double_exponential_smoothing["components"]["trainData"],
+                x=self.results["trainData"].index,
+                y=self.results["trainData"],
                 name="Train data"
             ),
             row=1,
             col=1
         )
 
-        self.double_exponential_smoothing["figure"].append_trace(
+        self.figure.append_trace(
             go.Scatter(
-                x=self.double_exponential_smoothing["components"]["testData"].index,
-                y=self.double_exponential_smoothing["components"]["testData"],
+                x=self.results["testData"].index,
+                y=self.results["testData"],
                 name="Test data"
             ),
             row=1,
             col=1
         )
 
-        self.double_exponential_smoothing["figure"].append_trace(
+        self.figure.append_trace(
             go.Scatter(
-                x=self.double_exponential_smoothing["components"]["fittedData"].index,
-                y=self.double_exponential_smoothing["components"]["fittedData"],
+                x=self.results["fittedData"].index,
+                y=self.results["fittedData"],
                 name="Fitted data"
             ),
             row=1,
             col=1
         )
 
-        self.double_exponential_smoothing["figure"].append_trace(
+        self.figure.append_trace(
             go.Scatter(
-                x=self.double_exponential_smoothing["components"]["forecastData"].index,
-                y=self.double_exponential_smoothing["components"]["forecastData"],
+                x=self.results["forecastData"].index,
+                y=self.results["forecastData"],
                 name="Forecast data"
             ),
             row=1,
             col=1
         )
 
-        self.double_exponential_smoothing["figure"].add_annotation(
+        self.figure.add_annotation(
             x=0.02,
             y=0.92,
             xref="paper",
             yref="paper",
             text="<span style='font-size: 13px'; 'font-family: Helvetica, Calibri';><b>Forecast evaluation</b></span><br>"
-                 + "<span style='font-size: 11px'; 'font-family: Helvetica, Calibri';>RMSE: {}</span>".format(round(self.double_exponential_smoothing["forecastEvaluation"], 2)),
+                 + "<span style='font-size: 11px'; 'font-family: Helvetica, Calibri';>RMSE: {}</span>".format(round(self.results["forecastEvaluation"], 2)),
             align="left",
             bordercolor="black",
             borderwidth=1,
@@ -133,10 +89,10 @@ class DoubleExponentialSmoothing:
             showarrow=False,
         )
 
-        self.double_exponential_smoothing["figure"].update_layout(
+        self.figure.update_layout(
             height=395,
             title=dict(
-                text="<span style='font-size: 22px'; 'font-family: Helvetica, Calibri';><b>{} X Datetime</b></span>".format(self.double_exponential_smoothing["dataType"]),
+                text="<span style='font-size: 22px'; 'font-family: Helvetica, Calibri';><b>{} X Date</b></span>".format(self.input_data_info["dataType"]),
                 y=0.94,
                 x=0.5,
                 xanchor='center',
@@ -151,12 +107,28 @@ class DoubleExponentialSmoothing:
             )
         )
 
-    def set_forecast_evaluation(self):
+    def _set_results(self):
 
-        mse = mean_squared_error(
-            self.double_exponential_smoothing["components"]["testData"],
-            self.double_exponential_smoothing["components"]["forecastData"]
+        train_data = self.input_data_info["dataArray"].iloc[:int(0.8 * len(self.input_data_info["dataArray"]))]
+        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])) - 1:]
+
+        model = ExponentialSmoothing(
+            endog=train_data,
+            trend="mul"
         )
-        rmse = np.sqrt(mse)
+        fitted_model = model.fit()
 
-        self.double_exponential_smoothing["forecastEvaluation"] = rmse
+        fitted_data = fitted_model.fittedvalues.shift(-1)
+        forecast_data = fitted_model.forecast(len(test_data))
+
+        forecast_rmse = mean_squared_error(
+            y_true=test_data,
+            y_pred=forecast_data,
+            squared=False
+        )
+
+        self.results["trainData"] = train_data
+        self.results["testData"] = test_data
+        self.results["fittedData"] = fitted_data
+        self.results["forecastData"] = forecast_data
+        self.results["forecastEvaluation"] = forecast_rmse

@@ -47,11 +47,11 @@ def render_content(tab):
     Output('mathematical-tool-explanation', 'children'),
     Input('mathematical-tool-dropdown', 'value')
 )
-def update_output(value):
+def update_output(mathematical_tool):
 
-    return data_analysis_and_forecasting.get_results()[value]["figure"], \
-           datasets.get()[data_analysis_and_forecasting.get_results()[value]["dataset"]]["explanation"], \
-           data_analysis_and_forecasting.get_results()[value]["explanation"]
+    return data_analysis_and_forecasting.get_results(mathematical_tool).get_figure(), \
+           datasets.get()[data_analysis_and_forecasting.get_results(mathematical_tool).get_input_data_info()["dataSet"]]["explanation"], \
+           data_analysis_and_forecasting.get_results(mathematical_tool).get_explanation()
 
 
 if __name__ == '__main__':

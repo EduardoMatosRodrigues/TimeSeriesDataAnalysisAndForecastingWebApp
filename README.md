@@ -23,15 +23,15 @@
 
 >### **What mathematical tools are used in this project?**
 > - Analysis:
->  - Augmented Dickey-Fuller test
->  - Error-trend-seasonality decomposition
->  - Exponentially weighted moving average
->  - Hodrick-Prescott filter
->  - Simple moving average
+>   - Augmented Dickey-Fuller test
+>   - Error-trend-seasonality decomposition
+>   - Exponentially weighted moving average
+>   - Hodrick-Prescott filter
+>   - Simple moving average
 > - Forecasting:
->  - Double exponential smoothing (Holt's method)
->  - Simple exponential smoothing
->  - Triple exponential smoothing (Holt-Winters' method)
+>   - Double exponential smoothing (Holt's method)
+>   - Simple exponential smoothing
+>   - Triple exponential smoothing (Holt-Winters' method)
 
 <br>
 

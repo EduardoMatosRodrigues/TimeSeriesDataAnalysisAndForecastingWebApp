@@ -76,7 +76,7 @@ class TripleExponentialSmoothing(MathematicalToolInterface):
 
         self.figure.add_annotation(
             x=0.02,
-            y=0.92,
+            y=0.93,
             xref="paper",
             yref="paper",
             text="<span style='font-size: 13px'; 'font-family: Helvetica, Calibri';><b>Forecast evaluation</b></span><br>"

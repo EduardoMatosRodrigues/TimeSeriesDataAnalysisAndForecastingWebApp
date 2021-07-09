@@ -1,3 +1,4 @@
+from data_analysis_and_forecasting.mathematical_tools.analysis.augmented_dickey_fuller_test.augmented_dickey_fuller_test import AugmentedDickeyFullerTest
 from data_analysis_and_forecasting.mathematical_tools.analysis.error_trend_seasonality_decomposition.error_trend_seasonality_decomposition import ErrorTrendSeasonalityDecomposition
 from data_analysis_and_forecasting.mathematical_tools.analysis.exponentially_weighted_moving_average.exponentially_weighted_moving_average import ExponentiallyWeightedMovingAverage
 from data_analysis_and_forecasting.mathematical_tools.analysis.hodrick_prescott_filter.hodrick_prescott_filter import HodrickPrescottFilter
@@ -18,6 +19,18 @@ class DataAnalysisAndForecasting:
     def get_results(self, mathematical_tool):
 
         return self.results[mathematical_tool]
+
+    def set_augmented_dickey_fuller_test(self):
+
+        augmented_dickey_fuller_test = AugmentedDickeyFullerTest()
+        augmented_dickey_fuller_test.set(
+            dataArray=self.datasets["internationalAirlinePassengers"]["pandasDataframe"]["Thousands of Passengers"],
+            dataSet="internationalAirlinePassengers",
+            dataType="Passengers",
+            dataUnit=None
+        )
+
+        self.results["augmentedDickeyFullerTest"] = augmented_dickey_fuller_test
 
     def set_double_exponential_smoothing(self):
 
@@ -76,6 +89,7 @@ class DataAnalysisAndForecasting:
         self.set_simple_exponential_smoothing()
         self.set_double_exponential_smoothing()
         self.set_triple_exponential_smoothing()
+        self.set_augmented_dickey_fuller_test()
 
     def set_simple_exponential_smoothing(self):
 

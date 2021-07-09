@@ -151,10 +151,11 @@ class AppLayout:
     def get_analysis_dropdown_options():
 
         analysis_dropdown_options = [
-            {'label': 'Hodrick-Prescott Filter', 'value': 'hodrickPrescottFilter'},
+            {'label': 'Augmented Dickey-Fuller Test', 'value': 'augmentedDickeyFullerTest'},
             {'label': 'Error-Trend-Seasonality (ETS) Decomposition', 'value': 'errorTrendSeasonalityDecomposition'},
-            {'label': 'Simple Moving Average', 'value': 'simpleMovingAverage'},
             {'label': 'Exponentially Weighed Moving Average (EWMA)', 'value': 'exponentiallyWeightedMovingAverage'},
+            {'label': 'Hodrick-Prescott Filter', 'value': 'hodrickPrescottFilter'},
+            {'label': 'Simple Moving Average', 'value': 'simpleMovingAverage'},
         ]
 
         return analysis_dropdown_options
@@ -163,8 +164,8 @@ class AppLayout:
     def get_forecasting_dropdown_options():
 
         forecasting_dropdown_options = [
-            {'label': 'Simple Exponential Smoothing', 'value': 'simpleExponentialSmoothing'},
             {'label': "Double Exponential Smoothing (Holt's Method)", 'value': 'doubleExponentialSmoothing'},
+            {'label': 'Simple Exponential Smoothing', 'value': 'simpleExponentialSmoothing'},
             {'label': "Triple Exponential Smoothing (Holt-Winters' Method)", 'value': 'tripleExponentialSmoothing'}
         ]
 

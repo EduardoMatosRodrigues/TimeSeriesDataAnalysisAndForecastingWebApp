@@ -9,6 +9,7 @@
 <br>
 
 >### **What Python libraries are used in this project?**
+> - abc
 > - dash
 > - dash_core_components
 > - dash_html_components
@@ -22,14 +23,15 @@
 
 >### **What mathematical tools are used in this project?**
 > - Analysis:
->  - Error-trend-seasonality decomposition
->  - Exponentially weighted moving average
->  - Hodrick-Prescott filter
->  - Simple moving average
+>   - Augmented Dickey-Fuller test
+>   - Error-trend-seasonality decomposition
+>   - Exponentially weighted moving average
+>   - Hodrick-Prescott filter
+>   - Simple moving average
 > - Forecasting:
->  - Double exponential smoothing (Holt's method)
->  - Simple exponential smoothing
->  - Triple exponential smoothing (Holt-Winters' method)
+>   - Double exponential smoothing (Holt's method)
+>   - Simple exponential smoothing
+>   - Triple exponential smoothing (Holt-Winters' method)
 
 <br>
 

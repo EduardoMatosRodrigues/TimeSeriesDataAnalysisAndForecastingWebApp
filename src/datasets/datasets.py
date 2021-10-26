@@ -15,7 +15,8 @@ class Datasets:
 
         self.set_daily_female_births_in_california()
         self.set_international_airline_passengers()
-        self.set_time_series_data_samples()
+        self.set_time_series_data_sample_with_trend()
+        self.set_time_series_data_samples_with_causality()
         self.set_us_macroeconomic()
 
     def set_daily_female_births_in_california(self):
@@ -51,13 +52,24 @@ class Datasets:
 
         self.datasets["internationalAirlinePassengers"]["pandasDataframe"].index.freq = "MS"
 
-    def set_time_series_data_samples(self):
+    def set_time_series_data_sample_with_trend(self):
 
-        self.datasets["timeSeriesDataSamples"] = {
-            "explanation": "Time series data samples (1950 - 1959)",
+        self.datasets["timeSeriesDataSampleWithTrend"] = {
+            "explanation": "Time series data sample with trend (1950 - 1959)",
             "pandasDataframe": pd.read_csv(
-                "datasets/csv_files/time-series-data-samples.csv",
-                index_col=0,
+                "datasets/csv_files/time-series-data-sample-with-trend.csv",
+                index_col="Date",
+                parse_dates=True
+            )
+        }
+
+    def set_time_series_data_samples_with_causality(self):
+
+        self.datasets["timeSeriesDataSampleWithGrangerCausality"] = {
+            "explanation": "Time series data samples with Granger causality (1950 - 1959)",
+            "pandasDataframe": pd.read_csv(
+                "datasets/csv_files/time-series-data-samples-with-granger-causality.csv",
+                index_col="Date",
                 parse_dates=True
             )
         }

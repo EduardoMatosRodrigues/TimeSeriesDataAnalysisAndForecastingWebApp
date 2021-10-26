@@ -110,7 +110,7 @@ class TripleExponentialSmoothing(MathematicalToolInterface):
     def _set_results(self):
 
         train_data = self.input_data_info["dataArray"].iloc[:int(0.8 * len(self.input_data_info["dataArray"]))]
-        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])) - 1:]
+        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])):]
 
         model = ExponentialSmoothing(
             endog=train_data,

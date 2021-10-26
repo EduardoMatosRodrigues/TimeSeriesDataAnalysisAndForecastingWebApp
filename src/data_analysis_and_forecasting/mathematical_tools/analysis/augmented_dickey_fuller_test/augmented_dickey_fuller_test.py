@@ -85,9 +85,9 @@ class AugmentedDickeyFullerTest(MathematicalToolInterface):
 
         if self.results["pValue"] <= 0.05:
             self.results["testConclusion"] = \
-                "p = {} <= 0.05 (null hypothesis rejected)<br>".format(self.results["pValue"]) \
+                "<i>p</i> value = {} <= 0.05 (null hypothesis rejected)<br>".format(self.results["pValue"]) \
                 + "<i>Conclusion</i>: The data is stationary"
         else:
             self.results["testConclusion"] = \
-                "p = {} > 0.05 (null hypothesis not rejected)<br>".format(self.results["pValue"]) \
+                "<i>p</i> value = {} > 0.05 (null hypothesis not rejected)<br>".format(self.results["pValue"]) \
                 + "<i>Conclusion</i>: The data is non-stationary"

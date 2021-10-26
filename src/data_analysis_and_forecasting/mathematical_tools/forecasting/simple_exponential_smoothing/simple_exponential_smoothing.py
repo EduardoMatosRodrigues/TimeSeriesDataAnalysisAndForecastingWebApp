@@ -76,7 +76,7 @@ class SimpleExponentialSmoothing(MathematicalToolInterface):
 
         self.figure.add_annotation(
             x=0.02,
-            y=0.92,
+            y=0.93,
             xref="paper",
             yref="paper",
             text="<span style='font-size: 13px'; 'font-family: Helvetica, Calibri';><b>Forecast evaluation</b></span><br>"
@@ -116,7 +116,7 @@ class SimpleExponentialSmoothing(MathematicalToolInterface):
         alpha = 2/(span+1)
 
         train_data = self.input_data_info["dataArray"].iloc[:int(0.8 * len(self.input_data_info["dataArray"]))]
-        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])) - 1:]
+        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])):]
 
         model = SimpleExpSmoothing(endog=train_data)
         fitted_model = model.fit(

@@ -1,6 +1,7 @@
 from data_analysis_and_forecasting.mathematical_tools.analysis.augmented_dickey_fuller_test.augmented_dickey_fuller_test import AugmentedDickeyFullerTest
 from data_analysis_and_forecasting.mathematical_tools.analysis.error_trend_seasonality_decomposition.error_trend_seasonality_decomposition import ErrorTrendSeasonalityDecomposition
 from data_analysis_and_forecasting.mathematical_tools.analysis.exponentially_weighted_moving_average.exponentially_weighted_moving_average import ExponentiallyWeightedMovingAverage
+from data_analysis_and_forecasting.mathematical_tools.analysis.granger_causality_test.granger_causality_test import GrangerCausalityTest
 from data_analysis_and_forecasting.mathematical_tools.analysis.hodrick_prescott_filter.hodrick_prescott_filter import HodrickPrescottFilter
 from data_analysis_and_forecasting.mathematical_tools.analysis.simple_moving_average.simple_moving_average import SimpleMovingAverage
 from data_analysis_and_forecasting.mathematical_tools.forecasting.double_exponential_smoothing.double_exponential_smoothing import DoubleExponentialSmoothing
@@ -36,9 +37,9 @@ class DataAnalysisAndForecasting:
 
         double_exponential_smoothing = DoubleExponentialSmoothing()
         double_exponential_smoothing.set(
-            dataArray=self.datasets["timeSeriesDataSamples"]["pandasDataframe"]["Data with trend"],
-            dataSet="timeSeriesDataSamples",
-            dataType="Sample data",
+            dataArray=self.datasets["timeSeriesDataSampleWithTrend"]["pandasDataframe"]["Data with trend"],
+            dataSet="timeSeriesDataSampleWithTrend",
+            dataType="Sample data with trend",
             dataUnit=None
         )
 
@@ -68,6 +69,21 @@ class DataAnalysisAndForecasting:
 
         self.results["exponentiallyWeightedMovingAverage"] = exponentially_weighted_moving_average
 
+    def set_granger_causality_test(self):
+
+        granger_causality_test = GrangerCausalityTest()
+        granger_causality_test.set(
+            dataArray1=self.datasets["timeSeriesDataSampleWithGrangerCausality"]["pandasDataframe"]["Data 1"],
+            dataArray2=self.datasets["timeSeriesDataSampleWithGrangerCausality"]["pandasDataframe"]["Data 2"],
+            dataSet="timeSeriesDataSampleWithGrangerCausality",
+            dataType1="Sample data 1",
+            dataType2="Sample data 2",
+            dataUnit1=None,
+            dataUnit2=None
+        )
+
+        self.results["grangerCausalityTest"] = granger_causality_test
+
     def set_hodrick_prescott_filter(self):
 
         hodrick_prescott_filter = HodrickPrescottFilter()
@@ -90,6 +106,7 @@ class DataAnalysisAndForecasting:
         self.set_double_exponential_smoothing()
         self.set_triple_exponential_smoothing()
         self.set_augmented_dickey_fuller_test()
+        self.set_granger_causality_test()
 
     def set_simple_exponential_smoothing(self):
 

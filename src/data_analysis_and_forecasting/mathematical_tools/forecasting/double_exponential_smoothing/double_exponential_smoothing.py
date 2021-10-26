@@ -76,7 +76,7 @@ class DoubleExponentialSmoothing(MathematicalToolInterface):
 
         self.figure.add_annotation(
             x=0.02,
-            y=0.92,
+            y=0.93,
             xref="paper",
             yref="paper",
             text="<span style='font-size: 13px'; 'font-family: Helvetica, Calibri';><b>Forecast evaluation</b></span><br>"
@@ -110,7 +110,7 @@ class DoubleExponentialSmoothing(MathematicalToolInterface):
     def _set_results(self):
 
         train_data = self.input_data_info["dataArray"].iloc[:int(0.8 * len(self.input_data_info["dataArray"]))]
-        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])) - 1:]
+        test_data = self.input_data_info["dataArray"].iloc[int(0.8 * len(self.input_data_info["dataArray"])):]
 
         model = ExponentialSmoothing(
             endog=train_data,

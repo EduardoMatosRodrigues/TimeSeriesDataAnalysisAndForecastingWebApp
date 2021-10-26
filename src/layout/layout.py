@@ -154,6 +154,7 @@ class AppLayout:
             {'label': 'Augmented Dickey-Fuller Test', 'value': 'augmentedDickeyFullerTest'},
             {'label': 'Error-Trend-Seasonality (ETS) Decomposition', 'value': 'errorTrendSeasonalityDecomposition'},
             {'label': 'Exponentially Weighed Moving Average (EWMA)', 'value': 'exponentiallyWeightedMovingAverage'},
+            {'label': 'Granger Causality Test', 'value': 'grangerCausalityTest'},
             {'label': 'Hodrick-Prescott Filter', 'value': 'hodrickPrescottFilter'},
             {'label': 'Simple Moving Average', 'value': 'simpleMovingAverage'},
         ]

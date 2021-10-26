@@ -46,9 +46,9 @@ class MathematicalToolInterface(ABC):
 
     def _set_input_data_info(self, **kwargs):
 
+        self.input_data_info["dataArray"] = kwargs["dataArray"]
         self.input_data_info["dataSet"] = kwargs["dataSet"]
         self.input_data_info["dataType"] = kwargs["dataType"]
-        self.input_data_info["dataArray"] = kwargs["dataArray"]
         self.input_data_info["dataUnit"] = kwargs["dataUnit"]
 
     @abstractmethod
